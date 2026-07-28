@@ -1,7 +1,7 @@
 use crate::configuration::state::AppState;
 use crate::core::subjects::dto::SubjectResponseDTO::SubjectResponseDTO;
 use actix_web::web::Data;
-use actix_web::{ HttpResponse, get};
+use actix_web::{HttpResponse, get};
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -11,9 +11,7 @@ pub struct SubjectQueryParameters {
 }
 
 #[get("/")]
-pub async fn search_subjects(
-    state: Data<AppState>,
-) -> actix_web::Result<HttpResponse> {
+pub async fn search_subjects(state: Data<AppState>) -> actix_web::Result<HttpResponse> {
     log::info!(
         "subjects.search.request.received | handler | search_subjects | started | \"Received request to search subjects\" |"
     );

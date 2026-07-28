@@ -40,13 +40,13 @@ pub async fn run_migrations(pool: &PgPool) {
     match sqlx::migrate!("./migrations").run(pool).await {
         Ok(_) => {
             log::info!(
-            "database.migrations.run.success | database | run_migrations | success | \"Database migrations ran successfully\" | path=\"./migrations\""
-        );
+                "database.migrations.run.success | database | run_migrations | success | \"Database migrations ran successfully\" | path=\"./migrations\""
+            );
         }
         Err(e) => {
             log::error!(
-            "database.migrations.run.failed | database | run_migrations | failed | \"Failed to run database migrations\" | error=\"{e}\" path=\"./migrations\""
-        );
+                "database.migrations.run.failed | database | run_migrations | failed | \"Failed to run database migrations\" | error=\"{e}\" path=\"./migrations\""
+            );
         }
     }
 }
