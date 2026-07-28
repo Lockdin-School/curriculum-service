@@ -1,9 +1,9 @@
 #![allow(non_snake_case)]
 
 pub mod Subject;
-pub mod SubjectStatus;
 pub mod SubjectCategory;
+pub mod SubjectStatus;
 
 use Subject::*;
-use SubjectStatus::*;
 use SubjectCategory::*;
+use SubjectStatus::*;

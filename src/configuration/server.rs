@@ -1,11 +1,11 @@
-use tokio::io;
-use actix_web::{App, HttpServer};
-use actix_web::middleware::Logger;
-use actix_web::web::Data;
 use crate::configuration::cors::build_cors;
 use crate::configuration::routes;
 use crate::configuration::state::AppState;
 use crate::infrastructure::environment_variables::EnvironmentVars;
+use actix_web::middleware::Logger;
+use actix_web::web::Data;
+use actix_web::{App, HttpServer};
+use tokio::io;
 
 pub async fn run(state: AppState) -> io::Result<()> {
     log::info!("running server...");
@@ -18,8 +18,8 @@ pub async fn run(state: AppState) -> io::Result<()> {
             .app_data(Data::new(state.clone()))
             .configure(routes::configure)
     })
-        .workers(8)
-        .bind((ev.host, ev.port))?
-        .run()
-        .await
+    .workers(8)
+    .bind((ev.host, ev.port))?
+    .run()
+    .await
 }

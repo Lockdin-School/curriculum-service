@@ -1,7 +1,7 @@
-use sqlx::{Error, PgPool};
-use uuid::Uuid;
 use crate::core::subjects::models::Subject::Subject;
 use crate::core::subjects::repository::SubjectRepository::SubjectRepository;
+use sqlx::{Error, PgPool};
+use uuid::Uuid;
 
 pub struct PostgresSubjectRepository {
     pub pool: PgPool,

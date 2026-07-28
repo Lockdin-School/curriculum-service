@@ -1,6 +1,6 @@
 // use sqlx::PgPool;
 // use uuid::Uuid;
-// 
+//
 // pub async fn seed_subject_categories(pool: &PgPool) -> sqlx::Result<()> {
 //     let categories = [
 //         (
@@ -53,7 +53,7 @@
 //             7,
 //         ),
 //     ];
-// 
+//
 //     for category in categories {
 //         let _ = sqlx::query_as(
 //             "
@@ -77,6 +77,6 @@
 //             .execute(pool)
 //             .await?;
 //     }
-// 
+//
 //     Ok(())
 // }

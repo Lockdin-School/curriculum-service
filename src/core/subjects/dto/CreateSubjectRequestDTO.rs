@@ -1,6 +1,6 @@
+use crate::core::subjects::models::SubjectStatus::SubjectStatus;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
-use crate::core::subjects::models::SubjectStatus::SubjectStatus;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]

@@ -1,14 +1,14 @@
-use std::io::Write;
-use env_logger::Env;
 use crate::configuration::server::run;
 use crate::configuration::state::init_state;
+use env_logger::Env;
+use std::io::Write;
 
 pub mod configuration;
 pub mod core;
 pub mod infrastructure;
 
 #[actix_web::main]
-async fn main() -> std::io::Result<()>{
+async fn main() -> std::io::Result<()> {
     dotenv::dotenv().ok();
 
     env_logger::Builder::from_env(Env::default().default_filter_or("info"))

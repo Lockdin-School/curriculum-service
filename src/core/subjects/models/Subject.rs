@@ -1,8 +1,8 @@
+use crate::core::subjects::models::SubjectStatus::SubjectStatus;
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
 use uuid::Uuid;
-use crate::core::subjects::models::SubjectStatus::SubjectStatus;
 
 #[derive(Debug, Clone, Serialize, Deserialize, FromRow)]
 #[serde(rename_all = "camelCase")]
@@ -25,7 +25,6 @@ pub struct Subject {
     // ---------------------------------------------------------------------
     // Classification
     // ---------------------------------------------------------------------
-
     pub curriculum_id: Uuid,
 
     pub grade_id: Uuid,
@@ -37,7 +36,6 @@ pub struct Subject {
     // ---------------------------------------------------------------------
     // Presentation
     // ---------------------------------------------------------------------
-
     pub cover_image_url: Option<String>,
 
     pub icon_url: Option<String>,
@@ -49,13 +47,11 @@ pub struct Subject {
     // ---------------------------------------------------------------------
     // Metadata
     // ---------------------------------------------------------------------
-
     pub estimated_hours: Option<i16>,
 
     // ---------------------------------------------------------------------
     // Cached Statistics
     // ---------------------------------------------------------------------
-
     pub total_modules: i32,
 
     pub total_topics: i32,
@@ -73,7 +69,6 @@ pub struct Subject {
     // ---------------------------------------------------------------------
     // Status
     // ---------------------------------------------------------------------
-
     pub status: SubjectStatus,
 
     pub is_featured: bool,
@@ -83,13 +78,11 @@ pub struct Subject {
     // ---------------------------------------------------------------------
     // Versioning
     // ---------------------------------------------------------------------
-
     pub version: i32,
 
     // ---------------------------------------------------------------------
     // Audit
     // ---------------------------------------------------------------------
-
     pub created_at: DateTime<Utc>,
 
     pub updated_at: DateTime<Utc>,
