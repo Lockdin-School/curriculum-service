@@ -1,7 +1,9 @@
-pub mod subject;
-pub mod subject_status;
-pub mod subject_category;
+#![allow(non_snake_case)]
 
-pub use subject::*;
-pub use subject_category::*;
-pub use subject_status::*;
+pub mod Subject;
+pub mod SubjectStatus;
+pub mod SubjectCategory;
+
+use Subject::*;
+use SubjectStatus::*;
+use SubjectCategory::*;

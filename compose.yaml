@@ -18,6 +18,11 @@ services:
       - lockdin-net
     depends_on:
       - db
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
   db:
     container_name: postgresdb
     image: postgres:16-alpine
@@ -29,7 +34,9 @@ services:
     networks:
       - lockdin-net
     volumes:
-      - lockdin-storage:/var/lib/postgresql/data
+      - type: volume
+        source: lockdin-storage
+        target: /var/lib/postgresql/data
 
 
 volumes:
