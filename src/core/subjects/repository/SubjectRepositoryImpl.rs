@@ -1,7 +1,6 @@
 use crate::core::subjects::models::Subject::Subject;
 use crate::core::subjects::repository::SubjectRepository::SubjectRepository;
 use sqlx::{Error, PgPool};
-use uuid::Uuid;
 
 pub struct PostgresSubjectRepository {
     pub pool: PgPool,
@@ -16,19 +15,19 @@ impl SubjectRepository for PostgresSubjectRepository {
         Ok(subjects)
     }
 
-    async fn get_subject(&self, id: Uuid) -> sqlx::Result<Subject, Error> {
-        todo!()
-    }
-
-    async fn create_subject(&self, subject: Subject) -> sqlx::Result<Subject, Error> {
-        todo!()
-    }
-
-    async fn update_subject(&self, subject: Subject) -> sqlx::Result<Subject, Error> {
-        todo!()
-    }
-
-    async fn delete_subject(&self, id: Uuid) -> sqlx::Result<Subject, Error> {
-        todo!()
-    }
+    // async fn get_subject(&self, id: Uuid) -> sqlx::Result<Subject, Error> {
+    //     todo!()
+    // }
+    //
+    // async fn create_subject(&self, subject: Subject) -> sqlx::Result<Subject, Error> {
+    //     todo!()
+    // }
+    //
+    // async fn update_subject(&self, subject: Subject) -> sqlx::Result<Subject, Error> {
+    //     todo!()
+    // }
+    //
+    // async fn delete_subject(&self, id: Uuid) -> sqlx::Result<Subject, Error> {
+    //     todo!()
+    // }
 }

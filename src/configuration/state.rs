@@ -26,6 +26,5 @@ pub async fn init_state() -> AppState {
     // let redis = init_redis().await.expect("Failed to initialize redis");
 
     run_migrations(&pg_pool).await;
-    let state = app_state(pg_pool);
-    state
+    app_state(pg_pool)
 }

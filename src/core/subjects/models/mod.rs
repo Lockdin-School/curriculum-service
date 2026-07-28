@@ -3,7 +3,3 @@
 pub mod Subject;
 pub mod SubjectCategory;
 pub mod SubjectStatus;
-
-use Subject::*;
-use SubjectCategory::*;
-use SubjectStatus::*;
