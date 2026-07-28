@@ -8,8 +8,8 @@
 # ------------------------------------------------------------------------------
 # Docker
 # ------------------------------------------------------------------------------
-Dockerfile*
-compose.yaml
+Dockerfile
+compose.yml
 compose.*.yaml
 docker-compose*.yml
 .dockerignore

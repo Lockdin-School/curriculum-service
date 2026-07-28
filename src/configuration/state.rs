@@ -1,9 +1,9 @@
 use crate::core::subjects::repository::SubjectRepositoryImpl::PostgresSubjectRepository;
-use crate::core::subjects::service::SubjectService;
 use crate::infrastructure::db::database::{init_postgres, run_migrations};
 use actix_web::web::Data;
 use sqlx::PgPool;
 use std::sync::Arc;
+use crate::core::subjects::service::service::SubjectService;
 
 #[derive(Clone)]
 pub struct AppState {

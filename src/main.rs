@@ -6,6 +6,8 @@ use std::io::Write;
 pub mod configuration;
 pub mod core;
 pub mod infrastructure;
+#[cfg(test)]
+pub mod test_utils;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
