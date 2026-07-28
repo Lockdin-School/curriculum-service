@@ -1,5 +1,5 @@
 use crate::core::subjects::repository::SubjectRepositoryImpl::PostgresSubjectRepository;
-use crate::core::subjects::service::service::SubjectService;
+use crate::core::subjects::service::SubjectService::SubjectService;
 use crate::infrastructure::db::database::{init_postgres, run_migrations};
 use actix_web::web::Data;
 use sqlx::PgPool;

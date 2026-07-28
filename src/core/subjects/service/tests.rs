@@ -2,7 +2,7 @@ use crate::core::subjects::models::Subject::Subject;
 use crate::core::subjects::models::SubjectStatus::SubjectStatus;
 use crate::core::subjects::repository::SubjectRepository::SubjectRepository;
 
-use crate::core::subjects::service::service::SubjectService;
+use crate::core::subjects::service::SubjectService::SubjectService;
 use async_trait::async_trait;
 use chrono::Utc;
 use sqlx::Error as SqlxError;
