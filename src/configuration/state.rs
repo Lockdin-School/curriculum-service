@@ -1,5 +1,7 @@
 use crate::core::subjects::repository::SubjectRepositoryImpl::PostgresSubjectRepository;
 use crate::core::subjects::service::SubjectService::SubjectService;
+use crate::core::topics::repository::TopicRepositoryImpl::PostgresTopicRepository;
+use crate::core::topics::service::TopicService::TopicService;
 use crate::infrastructure::db::database::{init_postgres, run_migrations};
 use actix_web::web::Data;
 use sqlx::PgPool;
@@ -8,12 +10,18 @@ use std::sync::Arc;
 #[derive(Clone)]
 pub struct AppState {
     pub subject_service: Data<SubjectService>,
+    pub topic_service: Data<TopicService>,
 }
 
 pub fn app_state(pg_pool: PgPool) -> AppState {
     AppState {
         subject_service: Data::new(SubjectService {
             repo: Arc::new(PostgresSubjectRepository {
+                pool: pg_pool.clone(),
+            }),
+        }),
+        topic_service: Data::new(TopicService {
+            repo: Arc::new(PostgresTopicRepository {
                 pool: pg_pool.clone(),
             }),
         }),
