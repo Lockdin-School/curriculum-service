@@ -45,7 +45,7 @@ Desktop.ini
 # Docker / local runtime
 # ------------------------------------------------------------------------------
 docker-compose.override.yml
-compose.override.yaml
+compose.override.yml
 *.pid
 
 # ------------------------------------------------------------------------------
