@@ -11,7 +11,7 @@ services:
 #      - JWT_SECRET=${JWT_SECRET}
 #      - RESEND_API_KEY=${RESEND_API_KEY}
     env_file:
-      - .env
+      - .env.local
     networks:
       - lockdin-net
     depends_on:
