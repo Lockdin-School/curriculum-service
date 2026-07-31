@@ -14,6 +14,6 @@ FROM debian:bookworm-slim AS development-runtime
 
 WORKDIR /app
 
-COPY --from=development-build /app/target/debug/lockdinschoolserver .
+COPY --from=development-build /app/target/debug/curriculum-service .
 
-CMD ["./lockdinschoolserver"]
+CMD ["./curriculum-service"]
