@@ -1,4 +1,4 @@
-# Lockdin School Server
+# Lockdin Platform - Curriculum Service
 
 Backend server for the Lockdin School platform.
 
