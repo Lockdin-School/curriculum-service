@@ -1,23 +1,35 @@
 services:
-  app:
+  curriculum-service:
     build: .
-    container_name: web-server
-    ports:
-      - "8080:8080"
-#    environment:
-#      - RUST_LOG=${RUST_LOG:-info}
-#      - DATABASE_URL=${DATABASE_URL}
-#      - REDIS_URL=${REDIS_URL}
-#      - JWT_SECRET=${JWT_SECRET}
-#      - RESEND_API_KEY=${RESEND_API_KEY}
+    container_name: curriculum-service
+    expose:
+      - "8080"
     env_file:
       - .env.local
     networks:
-      - lockdin-net
+      - lockdin-network
+      - curr-sn
     depends_on:
-      - db
-    develop:
-      watch:
-        - action: sync
-          path: ./src
-          target: /app/src
+      - curriculumDB
+
+  curriculumDB:
+    container_name: curriculum-db
+    image: postgres:16-alpine
+    command: -p 5433
+    ports:
+      - "5433:5433"
+    env_file:
+      - .env.local
+    networks:
+      - curr-sn
+    volumes:
+      - type: volume
+        source: lockdin-storage
+        target: /var/lib/postgresql/curriculum/data
+
+
+volumes:
+  lockdin-storage:
+
+networks:
+  curr-sn:

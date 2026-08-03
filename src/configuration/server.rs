@@ -14,7 +14,7 @@ pub async fn run(state: AppState) -> io::Result<()> {
         App::new()
             .wrap(Logger::default())
             .wrap(Logger::new("%a %{User-Agent}i %r %s %b %T"))
-            .wrap(build_cors())
+            .wrap(build_cors(&ev.frontend_origin))
             .app_data(Data::new(state.clone()))
             .configure(routes::configure)
     })
