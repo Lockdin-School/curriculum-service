@@ -1,3 +1,4 @@
+name: lockdin-school
 services:
   curriculum-service:
     build: .
@@ -24,12 +25,12 @@ services:
       - curr-sn
     volumes:
       - type: volume
-        source: lockdin-storage
+        source: curriculum-storage
         target: /var/lib/postgresql/curriculum/data
 
 
 volumes:
-  lockdin-storage:
+  curriculum-storage:
 
 networks:
   curr-sn:

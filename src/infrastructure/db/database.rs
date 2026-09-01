@@ -22,7 +22,8 @@ use sqlx::postgres::PgPoolOptions;
 // }
 
 pub async fn init_postgres() -> PgPool {
-    let database_url = std::env::var("DATABASE_URL_INTERNAL").expect("DATABASE_URL_INTERNAL must be set");
+    let database_url =
+        std::env::var("DATABASE_URL_INTERNAL").expect("DATABASE_URL_INTERNAL must be set");
     log::info!(
         "database.postgres.connection.start | database | init_postgres | started | \"Connecting to Database\" |"
     );
