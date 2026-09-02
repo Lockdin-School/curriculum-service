@@ -19,9 +19,9 @@ impl SubjectRepository for PostgresSubjectRepository {
             ORDER BY s.display_order ASC
             "#,
         )
-            .bind(grade)
-            .fetch_all(&self.pool)
-            .await?;
+        .bind(grade)
+        .fetch_all(&self.pool)
+        .await?;
 
         Ok(subjects)
     }
