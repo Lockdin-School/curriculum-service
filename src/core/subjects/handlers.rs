@@ -1,21 +1,24 @@
 use crate::configuration::state::AppState;
 use crate::core::subjects::dto::SubjectResponseDTO::SubjectResponseDTO;
-use actix_web::web::Data;
+use actix_web::web::{Data, Query};
 use actix_web::{HttpResponse, get};
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct SubjectQueryParameters {
-    pub id: String,
-    pub name: String,
+    pub grade: Option<i16>,
 }
 
-#[get("/")]
-pub async fn search_subjects(state: Data<AppState>) -> actix_web::Result<HttpResponse> {
+#[get("")]
+pub async fn search_subjects(
+    state: Data<AppState>,
+    query: Query<SubjectQueryParameters>,
+) -> actix_web::Result<HttpResponse> {
     log::info!(
-        "subjects.search.request.received | handler | search_subjects | started | \"Received request to search subjects\" |"
+        "subjects.search.request.received | handler | search_subjects | started | \"Received request to search subjects\" | grade={:?}",
+        query.grade
     );
-    match state.subject_service.search_subjects().await {
+    match state.subject_service.search_subjects(query.grade).await {
         Ok(subjects) => {
             let response: Vec<SubjectResponseDTO> =
                 subjects.into_iter().map(SubjectResponseDTO::from).collect();

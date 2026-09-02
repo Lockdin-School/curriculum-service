@@ -8,11 +8,13 @@ pub struct SubjectService {
 }
 
 impl SubjectService {
-    pub async fn search_subjects(&self) -> Result<Vec<Subject>, Error> {
+    pub async fn search_subjects(&self, grade: Option<i16>) -> Result<Vec<Subject>, Error> {
         log::info!(
-            "subjects.search.start | service | search_subjects | started | \"Searching subjects\" |"
+            "subjects.search.start | service | search_subjects | started | \"Searching subjects\" | grade={:?}",
+            grade
         );
-        match self.repo.get_subjects().await {
+
+        match self.repo.get_subjects(grade).await {
             Ok(subjects) => {
                 log::info!(
                     "subjects.search.success | service | search_subjects | success | \"Searched subjects successfully\" | count={}",

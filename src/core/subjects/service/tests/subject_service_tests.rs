@@ -16,13 +16,21 @@ struct MockSubjectRepository {
 
 #[async_trait]
 impl SubjectRepository for MockSubjectRepository {
-    async fn get_subjects(&self) -> sqlx::Result<Vec<Subject>, sqlx::Error> {
+    async fn get_subjects(&self, _grade: Option<i16>) -> sqlx::Result<Vec<Subject>, sqlx::Error> {
         if self.should_fail {
             Err(SqlxError::RowNotFound)
         } else {
             Ok(self.subjects.clone())
         }
     }
+
+    // async fn create_subject(&self, subject: Subject) -> sqlx::Result<Subject, sqlx::Error> {
+    //     if self.should_fail {
+    //         Err(SqlxError::RowNotFound)
+    //     } else {
+    //         Ok(subject)
+    //     }
+    // }
 }
 
 fn build_subject() -> Subject {
@@ -81,7 +89,7 @@ async fn search_subjects_returns_subjects_when_repository_succeeds() {
         }),
     };
 
-    let result = service.search_subjects().await;
+    let result = service.search_subjects(Some(0)).await;
 
     assert!(result.is_ok());
 
@@ -104,7 +112,7 @@ async fn search_subjects_returns_empty_list_when_repository_returns_no_subjects(
         }),
     };
 
-    let result = service.search_subjects().await;
+    let result = service.search_subjects(Some(0)).await;
 
     assert!(result.is_ok());
 
@@ -122,7 +130,7 @@ async fn search_subjects_returns_error_when_repository_fails() {
         }),
     };
 
-    let result = service.search_subjects().await;
+    let result = service.search_subjects(Some(0)).await;
 
     assert!(result.is_err());
 
